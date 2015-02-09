@@ -1,0 +1,15 @@
+<%= form_for(@location) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<br>
+<br>
+<%= f.label :address %>
+<%= f.text_field :address %>
+<br>
+<br>
+<%= f.label :zipcode, 'ZIP Code' %>
+<%= f.text_field :zipcode %>
+<br>
+<br>
+<%= f.submit %>
+<% end %>

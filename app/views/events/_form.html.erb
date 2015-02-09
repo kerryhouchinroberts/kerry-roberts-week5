@@ -1,0 +1,15 @@
+<%= form_for(@event) do |f| %>
+<%= f.label :description %>
+<%= f.text_field :description %>
+<br>
+<br>
+<%= f.label :date %>
+<%= f.date_select :date %>
+<br>
+<br>
+<%= f.label :requires_id, 'Requires ID?' %>
+<%= f.check_box :requires_id %>
+<br>
+<br>
+<%= f.submit %>
+<% end %>
