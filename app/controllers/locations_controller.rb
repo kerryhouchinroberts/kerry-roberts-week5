@@ -1,7 +1,6 @@
 class LocationsController < ApplicationController
   def index
     @locations = Location.all
-    location = Location.find(params[:id])
   end
 
   def new
@@ -12,18 +11,37 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
 
     if @location.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'Location was successfully created.'
     else
       render :new
     end
   end
 
+  def update
+    @location = Location.find(params[:id])
+
+    if @location.update_attributes(location_params)
+      redirect_to root_path, notice: 'Location was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   def show
     @location = Location.find(params[:id])
+    @events = Location.find(params[:id]).events
   end
 
   def edit
     @location = Location.find(params[:id])
+  end
+
+  def destroy
+    @location = Location.find(params[:id])
+
+   if  @location.destroy
+    redirect_to root_path, notice: 'Location was successfully destroyed.'
+    end
   end
 
   private

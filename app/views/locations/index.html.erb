@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+<div class = "alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
 <div class="page-header">
   <div class="pull-right">
   <%= link_to 'New Location', new_location_path, class:"btn btn-info" %>
@@ -17,13 +21,13 @@
   <tbody>
     <% @locations.each do |location| %>
       <tr>
-        <td><%= location.name %></td>
+        <td><%= link_to location.name, location_path(location.id) %></td>
         <td><%= location.address %></td>
         <td><%= location.zipcode %></td>
         <td class="text-right">
         <%= link_to 'Delete', location, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
         <%= link_to 'Edit', edit_location_path(location), class:"btn btn-info" %>
-        <%= link_to 'Create Event', new_location_event_path(@location.id), class:"btn btn-info" %></td>
+        <%= link_to 'Create Event', new_location_event_path(location.id), class:"btn btn-info" %></td>
       </tr>
     <% end %>
   </tbody>

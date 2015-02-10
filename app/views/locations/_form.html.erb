@@ -1,15 +1,41 @@
-<%= form_for(@location) do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<br>
-<br>
-<%= f.label :address %>
-<%= f.text_field :address %>
-<br>
-<br>
-<%= f.label :zipcode, 'ZIP Code' %>
-<%= f.text_field :zipcode %>
-<br>
-<br>
-<%= f.submit %>
+<%= form_for(@location, html: {class: "form-horizontal"}) do |f| %>
+
+<div class="form-group">
+  <label class="control-label col-md-2">
+    <%= f.label :name %>
+  </label>
+  <div class="form-controls col-md-4">
+    <%= f.text_field :name, :class =>'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-md-2">
+    <%= f.label :address %>
+    </label>
+    <div class="form-controls col-md-4">
+      <%= f.text_field :address, :class =>'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-md-2">
+      <%= f.label :zipcode, 'ZIP Code' %>
+    </label>
+    <div class="form-controls col-md-4">
+      <%= f.text_field :zipcode, :class =>'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="actions">
+    <div class="col-md-offset-2 col-md-4">
+      <input class="btn btn-primary"
+      <%= f.submit %>
+      <% unless @location.id == nil %>
+      <%= link_to 'Delete Location', @location, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>

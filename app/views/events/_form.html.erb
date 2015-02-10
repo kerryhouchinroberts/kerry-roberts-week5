@@ -1,15 +1,41 @@
-<%= form_for(@event) do |f| %>
-<%= f.label :description %>
-<%= f.text_field :description %>
-<br>
-<br>
-<%= f.label :date %>
-<%= f.date_select :date %>
-<br>
-<br>
-<%= f.label :requires_id, 'Requires ID?' %>
-<%= f.check_box :requires_id %>
-<br>
-<br>
-<%= f.submit %>
+<%= form_for([@location, @event], html: {class: "form-horizontal"}) do |f| %>
+
+  <div class="form-group">
+    <label class="control-label col-md-2">
+      <%= f.label :description %>
+    </label>
+    <div class="form-controls col-md-4">
+      <%= f.text_field :description, :class =>'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-md-2">
+      <%= f.label :date %>
+    </label>
+    <div class="form-controls col-md-4">
+      <%= f.date_select :date, :class =>'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-md-2">
+      <%= f.label :requires_id, 'Requires ID?' %>
+    </label>
+    <div class="form-controls col-md-4">
+      <%= f.check_box :requires_id %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="actions">
+    <div class="col-md-offset-2 col-md-4">
+      <input class="btn btn-primary"
+        <%= f.submit %>
+        <% unless @event.id == nil %>
+        <%= link_to 'Delete Event', location_event_path(@location, @event), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>

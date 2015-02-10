@@ -153,7 +153,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.3.2)
+  autoprefixer-rails
+  bootstrap-sass (~> 3.3.1)
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
